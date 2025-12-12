@@ -6,9 +6,10 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Component
 public class NesoClient {
 
-    private WebClient client;
+    private final WebClient webClient;
 
-    public NesoClient() {
+    public NesoClient(WebClient webClient) {
+        this.webClient = webClient;
     }
 
     public GenerationMixResponse fetchGenerationMixBetweenDates(String from, String to)
