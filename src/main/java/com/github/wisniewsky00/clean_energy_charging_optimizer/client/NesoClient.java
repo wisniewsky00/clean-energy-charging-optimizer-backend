@@ -14,6 +14,10 @@ public class NesoClient {
 
     public GenerationMixResponse fetchGenerationMixBetweenDates(String from, String to)
     {
-       return null;
+        return webClient.get()
+                .uri("/generation/{from}/{to}", from, to)
+                .retrieve()
+                .bodyToMono(GenerationMixResponse.class)
+                .block();
     }
 }
