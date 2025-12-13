@@ -26,8 +26,15 @@ public class EnergyMixAggregator {
     }
 
     public EnergyMixAggregator(OffsetDateTime start, OffsetDateTime end) {
+        this();
         this.start = start;
         this.end = end;
+    }
+
+    public EnergyMixAggregator(String start, String end) {
+        this();
+        this.start =OffsetDateTime.parse(start);
+        this.end = OffsetDateTime.parse(end);
     }
 
     public void setStart(OffsetDateTime start) {
@@ -96,5 +103,15 @@ public class EnergyMixAggregator {
         }
 
         return (cleanEnergySum / totalEnergySum) * 100;
+    }
+
+    @Override
+    public String toString() {
+        return "EnergyMixAggregator{" +
+                "sums=" + sums +
+                ", slotCount=" + slotCount +
+                ", start=" + start +
+                ", end=" + end +
+                '}';
     }
 }

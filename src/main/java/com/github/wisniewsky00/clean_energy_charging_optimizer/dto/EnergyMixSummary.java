@@ -131,4 +131,22 @@ public class EnergyMixSummary {
     public void setAvgCleanEnergy(double avgCleanEnergy) {
         this.avgCleanEnergy = avgCleanEnergy;
     }
+
+    @Override
+    public String toString() {
+        return "EnergyMixSummary{" +
+                "from=" + from +
+                ", to=" + to +
+                ", avgGas=" + avgGas +
+                ", avgCoal=" + avgCoal +
+                ", avgBiomass=" + avgBiomass +
+                ", avgNuclear=" + avgNuclear +
+                ", avgHydro=" + avgHydro +
+                ", avgImports=" + avgImports +
+                ", avgOther=" + avgOther +
+                ", avgWind=" + avgWind +
+                ", avgSolar=" + avgSolar +
+                ", avgCleanEnergy=" + avgCleanEnergy +
+                '}';
+    }
 }
