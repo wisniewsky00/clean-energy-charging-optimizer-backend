@@ -15,10 +15,27 @@ public class EnergyMixAggregator {
 
     Map<String, Double> sums;
     int slotCount;
+    OffsetDateTime start;
+    OffsetDateTime end;
 
     public EnergyMixAggregator() {
         this.sums = new HashMap<>();
-        slotCount = 0;
+        this.slotCount = 0;
+        this.start = null;
+        this.end = null;
+    }
+
+    public EnergyMixAggregator(OffsetDateTime start, OffsetDateTime end) {
+        this.start = start;
+        this.end = end;
+    }
+
+    public void setStart(OffsetDateTime start) {
+        this.start = start;
+    }
+
+    public void setEnd(OffsetDateTime end) {
+        this.end = end;
     }
 
     public void addSlot(GenerationMixSlot generationMixSlot) {
@@ -31,7 +48,7 @@ public class EnergyMixAggregator {
         sums.merge(generationMixEntry.getFuel().toLowerCase(), generationMixEntry.getPerc(), Double::sum);
     }
 
-    public EnergyMixSummary toSummary(OffsetDateTime start, OffsetDateTime end) {
+    public EnergyMixSummary toSummary() {
 
         if (slotCount == 0) {
             return new EnergyMixSummary();

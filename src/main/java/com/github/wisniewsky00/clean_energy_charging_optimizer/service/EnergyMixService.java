@@ -30,12 +30,12 @@ public class EnergyMixService {
             OffsetDateTime endingDate = getEndingDate(startingDate);
             GenerationMixResponse response = nesoClient.fetchGenerationMixBetweenDates(startingDate.plusMinutes(30).toString(), endingDate.toString());
 
-            EnergyMixAggregator energyMixAggregator = new EnergyMixAggregator();
+            EnergyMixAggregator energyMixAggregator = new EnergyMixAggregator(startingDate, endingDate);
             response.getData().forEach(generationMixSlot -> {
                 energyMixAggregator.addSlot(generationMixSlot);
             });
 
-            dailyEnergyMixSummaryList.add(energyMixAggregator.toSummary(startingDate, endingDate));
+            dailyEnergyMixSummaryList.add(energyMixAggregator.toSummary());
 
             startingDate = startingDate.plusDays(1);
         }
