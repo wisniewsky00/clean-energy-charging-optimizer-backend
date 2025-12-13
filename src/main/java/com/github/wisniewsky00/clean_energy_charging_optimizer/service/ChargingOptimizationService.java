@@ -4,7 +4,9 @@ import com.github.wisniewsky00.clean_energy_charging_optimizer.client.Generation
 import com.github.wisniewsky00.clean_energy_charging_optimizer.client.GenerationMixSlot;
 import com.github.wisniewsky00.clean_energy_charging_optimizer.client.NesoClient;
 import com.github.wisniewsky00.clean_energy_charging_optimizer.dto.EnergyMixSummary;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
@@ -21,6 +23,13 @@ public class ChargingOptimizationService {
     }
 
     public EnergyMixSummary calculateOptimizedChargingWindow(int chargingHoursLength) {
+
+        if (chargingHoursLength < 1 || chargingHoursLength > 6) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "chargingHoursLength must be between 1 and 6"
+            );
+        }
 
         int windowSlots = chargingHoursLength * 2;
 
