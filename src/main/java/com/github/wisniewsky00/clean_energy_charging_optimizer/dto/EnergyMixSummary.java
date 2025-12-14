@@ -36,6 +36,21 @@ public class EnergyMixSummary {
         this.avgCleanEnergy = avgCleanEnergy;
     }
 
+    public EnergyMixSummary(EnergyMixSummary energyMixSummary) {
+        this.from = energyMixSummary.getFrom();
+        this.to = energyMixSummary.getTo();
+        this.avgGas = energyMixSummary.getAvgGas();
+        this.avgCoal = energyMixSummary.getAvgCoal();
+        this.avgBiomass = energyMixSummary.getAvgBiomass();
+        this.avgNuclear = energyMixSummary.getAvgNuclear();
+        this.avgHydro = energyMixSummary.getAvgHydro();
+        this.avgImports = energyMixSummary.getAvgImports();
+        this.avgOther = energyMixSummary.getAvgOther();
+        this.avgWind = energyMixSummary.getAvgWind();
+        this.avgSolar = energyMixSummary.getAvgSolar();
+        this.avgCleanEnergy = energyMixSummary.getAvgCleanEnergy();
+    }
+
     public OffsetDateTime getFrom() {
         return from;
     }

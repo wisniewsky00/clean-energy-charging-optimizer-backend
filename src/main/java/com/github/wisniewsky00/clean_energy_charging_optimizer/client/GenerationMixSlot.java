@@ -10,6 +10,16 @@ public class GenerationMixSlot {
     public GenerationMixSlot() {
     }
 
+    public GenerationMixSlot(String from, String to, List<GenerationMixEntry> generationmix) {
+        this.from = from;
+        this.to = to;
+        this.generationmix = generationmix;
+    }
+
+    public GenerationMixSlot(List<GenerationMixEntry> generationMixEntries) {
+        generationmix = generationMixEntries;
+    }
+
     public String getFrom() {
         return from;
     }

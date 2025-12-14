@@ -7,6 +7,11 @@ public class GenerationMixEntry {
     public GenerationMixEntry() {
     }
 
+    public GenerationMixEntry(String fuel, double perc) {
+        this.fuel = fuel;
+        this.perc = perc;
+    }
+
     public String getFuel() {
         return fuel;
     }
